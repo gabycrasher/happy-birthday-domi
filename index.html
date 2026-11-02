@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday Domi 🎂</title>
+<meta name="description" content="It's Domi's birthday. Tap in.">
+<meta property="og:title" content="Happy Birthday Domi 🎂">
+<meta property="og:description" content="Psst… it's someone's birthday 👀">
+<meta property="og:image" content="img/domi.png">
+<meta name="theme-color" content="#ff5fa2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chewy&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
+<style>
+  :root { --pink:#ff5fa2; --yellow:#ffd23f; --blue:#3bceac; --purple:#7b5cff; --ink:#24123d; --paper:#fffaf0; }
+  * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html, body { margin:0; overflow-x:clip; }
+  body { font-family:Nunito, system-ui, sans-serif; color:var(--ink); background:#ffe8f3;
+    background-image:radial-gradient(#ffc2dd 2px, transparent 2px); background-size:26px 26px; min-height:100vh; }
+  h1, h2, .chewy { font-family:Chewy, cursive; font-weight:400; letter-spacing:.5px; }
+  button { font:inherit; cursor:pointer; }
+  .btn { background:var(--ink); color:#fff; border:0; border-radius:999px; padding:14px 26px; font-weight:900; font-size:1.05rem;
+    box-shadow:0 5px 0 var(--pink); transition:transform .12s, box-shadow .12s; }
+  .btn:active { transform:translateY(4px); box-shadow:0 1px 0 var(--pink); }
+  .btn.alt { background:#fff; color:var(--ink); box-shadow:0 5px 0 var(--ink); border:3px solid var(--ink); }
+
+  /* ---------- intro ---------- */
+  #intro { position:fixed; inset:0; z-index:20; display:grid; place-items:center; text-align:center; padding:24px; background:var(--ink); color:#fff; transition:clip-path .9s cubic-bezier(.7,0,.2,1); clip-path:circle(150% at 50% 50%); }
+  #intro.gone { clip-path:circle(0% at 50% 50%); pointer-events:none; }
+  #intro h1 { font-size:clamp(2rem, 8vw, 3.6rem); margin:0 0 6px; }
+  #intro p { opacity:.75; margin:0 0 26px; font-size:1.1rem; }
+  #intro .btn { box-shadow:0 5px 0 var(--yellow); background:var(--pink); }
+  #intro .btn.alt { background:#fff; }
+  .eyes { font-size:3.4rem; display:inline-block; animation:look 2.4s infinite; }
+  @keyframes look { 0%,40%,100% { transform:translateX(0) } 50%,70% { transform:translateX(-14px) } 80%,90% { transform:translateX(14px) } }
+  .dodge { position:relative; transition:transform .25s; }
+
+  /* ---------- page ---------- */
+  main { max-width:560px; margin:0 auto; padding:28px 16px 70px; }
+  section { margin:0 0 54px; text-align:center; }
+  .title { font-size:clamp(2.6rem, 13vw, 4.6rem); line-height:.95; margin:10px 0 18px; }
+  .title span { display:inline-block; animation:bob 1.6s ease-in-out infinite; text-shadow:3px 3px 0 var(--ink); -webkit-text-stroke:2px var(--ink); }
+  .title span.sp { width:.35em; }
+  @keyframes bob { 0%,100% { transform:translateY(0) rotate(-4deg) } 50% { transform:translateY(-10px) rotate(4deg) } }
+  .title span.spin { animation:spin .7s ease; }
+  @keyframes spin { to { transform:rotate(360deg) scale(1.3) } }
+
+  .polaroid { position:relative; width:min(300px, 78vw); margin:34px auto 6px; background:#fff; padding:12px 12px 54px; border-radius:6px;
+    box-shadow:0 14px 30px rgba(36,18,61,.25); transform:rotate(-4deg); transition:transform .3s; cursor:pointer; }
+  .polaroid:hover { transform:rotate(2deg) scale(1.03); }
+  .polaroid img { width:100%; display:block; aspect-ratio:1; object-fit:cover; border-radius:3px; }
+  .polaroid .cap { position:absolute; left:0; right:0; bottom:12px; font-family:Chewy; font-size:1.35rem; }
+  .hat { position:absolute; width:96px; left:50%; top:-74px; transform:translateX(-30%) rotate(14deg); pointer-events:none; filter:drop-shadow(2px 4px 0 rgba(0,0,0,.15)); }
+  .tape { position:absolute; width:90px; height:26px; background:rgba(255,210,63,.75); top:-12px; left:-22px; transform:rotate(-30deg); }
+  .potato { font-size:.85rem; opacity:.7; margin:12px 0 0; }
+  .boing { animation:boing .5s; }
+  @keyframes boing { 30% { transform:scale(1.15, .85) rotate(-4deg) } 60% { transform:scale(.9, 1.12) rotate(-4deg) } }
+
+  .card { background:#fff; border:3px solid var(--ink); border-radius:22px; padding:22px 18px; box-shadow:7px 7px 0 var(--ink); }
+  h2 { font-size:2rem; margin:0 0 6px; }
+  .sub { margin:0 0 16px; opacity:.75; }
+
+  /* cake */
+  .cake { position:relative; width:250px; height:190px; margin:46px auto 14px; }
+  .layer { position:absolute; left:50%; transform:translateX(-50%); border:3px solid var(--ink); border-radius:14px; }
+  .l1 { width:250px; height:78px; bottom:0; background:var(--pink); }
+  .l2 { width:190px; height:66px; bottom:72px; background:var(--yellow); }
+  .drip { position:absolute; left:-3px; right:-3px; top:-3px; height:22px; background:#fff; border:3px solid var(--ink); border-bottom:0; border-radius:12px 12px 0 0;
+    -webkit-mask:radial-gradient(circle at 12px 22px, transparent 9px, #000 10px) 0 0/24px 100%; mask:radial-gradient(circle at 12px 22px, transparent 9px, #000 10px) 0 0/24px 100%; }
+  .candles { position:absolute; bottom:134px; left:50%; transform:translateX(-50%); display:flex; gap:22px; }
+  .candle { position:relative; width:14px; height:44px; border:3px solid var(--ink); border-radius:4px; background:repeating-linear-gradient(45deg, #fff 0 6px, var(--blue) 6px 12px); cursor:pointer; padding:0; }
+  .flame { position:absolute; left:50%; bottom:100%; width:16px; height:24px; margin-left:-8px; margin-bottom:4px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+    background:radial-gradient(circle at 50% 70%, #fff6b0, #ffb700 55%, #ff6a00); animation:flick .18s infinite alternate; transform-origin:50% 100%; }
+  @keyframes flick { to { transform:scale(.88, 1.08) rotate(3deg) } }
+  .candle.out .flame { animation:none; transform:scale(0); transition:transform .2s; }
+  .candle.out::after { content:'💨'; position:absolute; left:-4px; bottom:56px; font-size:18px; animation:puff 1s forwards; }
+  @keyframes puff { to { transform:translateY(-30px); opacity:0 } }
+  .wish { min-height:1.6em; font-weight:900; font-size:1.1rem; }
+
+  /* psych report */
+  .report { text-align:left; position:relative; background:#fffef6; background-image:repeating-linear-gradient(transparent 0 29px, #d8e6ff 29px 30px); }
+  .report h2 { text-align:center; }
+  .report dl { margin:8px 0 0; }
+  .report dt { font-weight:900; color:var(--purple); margin-top:10px; font-size:.82rem; text-transform:uppercase; letter-spacing:.06em; }
+  .report dd { margin:2px 0 0; line-height:1.4; }
+  .stamp { position:absolute; right:12px; bottom:14px; border:4px solid #e0245e; color:#e0245e; font-family:Chewy; font-size:1.3rem; padding:4px 10px; border-radius:8px; transform:rotate(-14deg) scale(2.4); opacity:0; transition:transform .35s cubic-bezier(.3,1.6,.5,1), opacity .2s; background:rgba(255,255,255,.7); }
+  .stamp.on { transform:rotate(-14deg) scale(1); opacity:.9; }
+
+  .note { font-size:1.12rem; line-height:1.55; }
+  .note .sig { font-family:Chewy; font-size:1.6rem; margin-top:10px; }
+  .row { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:18px; }
+
+  /* raining heads */
+  .head { position:fixed; top:-90px; z-index:30; width:70px; height:70px; border-radius:50%; border:3px solid #fff; box-shadow:0 4px 10px rgba(0,0,0,.25); background:center/cover; pointer-events:none; }
+  #fx { position:fixed; inset:0; pointer-events:none; z-index:40; width:100%; height:100%; }
+  @media (prefers-reduced-motion: reduce) { .title span, .eyes, .flame { animation:none } }
+</style>
+</head>
+<body>
+
+<div id="intro">
+  <div>
+    <div class="eyes">👀</div>
+    <h1>psst… it's someone's birthday</h1>
+    <p>any idea whose?</p>
+    <div class="row" style="margin-top:0">
+      <button class="btn" id="mine">mine?? 🙋🏾‍♀️</button>
+      <button class="btn alt dodge" id="nope">no idea</button>
+    </div>
+  </div>
+</div>
+
+<main>
+  <section>
+    <h1 class="title" id="title" aria-label="Happy Birthday Domi"></h1>
+    <div class="polaroid" id="pol" title="boop">
+      <div class="tape"></div>
+      <svg class="hat" viewBox="0 0 100 110" aria-hidden="true">
+        <polygon points="50,6 92,100 8,100" fill="#7b5cff" stroke="#24123d" stroke-width="5" stroke-linejoin="round"/>
+        <path d="M30 55 L70 55 M22 78 L78 78" stroke="#ffd23f" stroke-width="7" stroke-linecap="round"/>
+        <circle cx="50" cy="8" r="9" fill="#ff5fa2" stroke="#24123d" stroke-width="4"/>
+      </svg>
+      <img src="img/domi.png" alt="Domi in her glasses">
+      <div class="cap">the birthday girl 👑</div>
+    </div>
+    <p class="potato">photo taken on a potato 🥔 because she's too iconic for HD</p>
+  </section>
+
+  <section>
+    <h2>blow out the candles 🕯️</h2>
+    <p class="sub">tap each one. no actual lungs needed.</p>
+    <div class="cake" aria-label="birthday cake">
+      <div class="candles" id="candles"></div>
+      <div class="layer l2"><div class="drip"></div></div>
+      <div class="layer l1"><div class="drip"></div></div>
+    </div>
+    <div class="wish" id="wish"></div>
+  </section>
+
+  <section>
+    <div class="card report" id="report">
+      <h2>🧠 official psych report</h2>
+      <dl>
+        <dt>Subject</dt><dd>Domi (age: classified 🤫)</dd>
+        <dt>Aim</dt><dd>To find out whether one person can be this iconic and still do their revision.</dd>
+        <dt>Method</dt><dd>Naturalistic observation over many years. Participant was aware. Participant was also judging us.</dd>
+        <dt>Results</dt><dd>Obedience to cake: 100% (Milgram is shaking). Kids who watched her learned to be iconic too (Bandura confirmed).</dd>
+        <dt>Evaluation</dt><dd>High ecological validity. Zero animals were tested 🐰. One limitation: the sample is one of a kind and can't be replicated.</dd>
+        <dt>Conclusion</dt><dd>Certified the best. Further research (birthday cake) is strongly recommended.</dd>
+      </dl>
+      <div class="stamp" id="stamp">APPROVED ✅</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="card note">
+      <h2>Happy birthday Domi! 🎉</h2>
+      <p>Another year of being smart, kind and a little bit chaotic in the best way.
+      I hope this year brings you top grades, good movies, great food and lots of laughs.</p>
+      <p>Thanks for being you. Now go eat cake. 🍰</p>
+      <div class="sig">— Gaby 💛</div>
+      <div class="row">
+        <button class="btn" id="rain">make it rain Domis 🌧️</button>
+        <button class="btn alt" id="party">more confetti 🎊</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<script>
+  const $ = s => document.querySelector(s);
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+
+  /* --- tiny sound effects (WebAudio, no files) --- */
+  let ac;
+  const tone = (f, d = .12, type = 'square', vol = .05, slide = 0) => {
+    try {
+      ac = ac || new (window.AudioContext || window.webkitAudioContext)();
+      const o = ac.createOscillator(), g = ac.createGain(), t = ac.currentTime;
+      o.type = type; o.frequency.setValueAtTime(f, t);
+      if (slide) o.frequency.exponentialRampToValueAtTime(f * slide, t + d);
+      g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(.0001, t + d);
+      o.connect(g); g.connect(ac.destination); o.start(t); o.stop(t + d);
+    } catch (e) {}
+  };
+  const sfx = {
+    boop: () => tone(520, .18, 'sine', .12, 1.8),
+    puff: () => tone(300, .25, 'triangle', .08, .4),
+    horn: () => { [0, 90, 180].forEach((d, i) => setTimeout(() => tone([392, 494, 587][i], .22, 'sawtooth', .05), d)); },
+    tune: async () => { // a few notes of the birthday song
+      const n = [[392,.2],[392,.2],[440,.4],[392,.4],[523,.4],[494,.7]];
+      for (const [f, d] of n) { tone(f, d, 'triangle', .09); await wait(d * 1000 + 40); }
+    }
+  };
+
+  /* --- confetti --- */
+  const cv = $('#fx'), cx = cv.getContext('2d'); let bits = [], raf;
+  const size = () => { cv.width = innerWidth * devicePixelRatio; cv.height = innerHeight * devicePixelRatio; };
+  addEventListener('resize', size); size();
+  function confetti(n = 160) {
+    const cols = ['#ff5fa2', '#ffd23f', '#3bceac', '#7b5cff', '#ff8a3d'];
+    for (let i = 0; i < n; i++) bits.push({ x: cv.width / 2 + (Math.random() - .5) * cv.width * .4, y: cv.height * .45,
+      vx: (Math.random() - .5) * 26, vy: -Math.random() * 26 - 8, r: Math.random() * 6, s: (Math.random() * 7 + 6) * devicePixelRatio,
+      c: cols[i % cols.length], vr: (Math.random() - .5) * .4 });
+    if (!raf) loop();
+  }
+  function loop() {
+    cx.clearRect(0, 0, cv.width, cv.height);
+    bits = bits.filter(b => b.y < cv.height + 40);
+    for (const b of bits) {
+      b.vy += .55; b.vx *= .99; b.x += b.vx; b.y += b.vy; b.r += b.vr;
+      cx.save(); cx.translate(b.x, b.y); cx.rotate(b.r); cx.fillStyle = b.c; cx.fillRect(-b.s / 2, -b.s / 4, b.s, b.s / 2); cx.restore();
+    }
+    raf = bits.length ? requestAnimationFrame(loop) : null;
+  }
+
+  /* --- intro --- */
+  const nope = $('#nope'); let dodges = 0;
+  const dodge = e => {
+    if (dodges++ > 4) { nope.textContent = 'ok fine, it’s yours'; nope.onclick = start; return; }
+    e.preventDefault();
+    nope.style.transform = `translate(${(Math.random() - .5) * 200}px, ${(Math.random() - .5) * 140}px) rotate(${(Math.random() - .5) * 40}deg)`;
+    nope.textContent = ['nice try', 'wrong answer', 'think harder', 'it’s YOURS', 'come on 😭'][dodges - 1] || 'no idea';
+    sfx.boop();
+  };
+  nope.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') dodge(e); });
+  nope.addEventListener('click', e => { if (nope.onclick !== start) dodge(e); });
+  $('#mine').addEventListener('click', start);
+  function start() {
+    $('#intro').classList.add('gone'); sfx.horn(); setTimeout(() => confetti(220), 300);
+  }
+
+  /* --- bouncy title --- */
+  const t = 'HAPPY BIRTHDAY DOMI', cols = ['var(--pink)', 'var(--yellow)', 'var(--blue)', 'var(--purple)'];
+  $('#title').innerHTML = [...t].map((ch, i) => ch === ' '
+    ? '<span class="sp"> </span>' + (i === 5 ? '<br>' : '')
+    : `<span style="color:${cols[i % 4]};animation-delay:${i * .08}s" aria-hidden="true">${ch}</span>`).join('');
+  $('#title').addEventListener('click', e => {
+    const s = e.target.closest('span:not(.sp)'); if (!s) return;
+    s.classList.remove('spin'); void s.offsetWidth; s.classList.add('spin'); sfx.boop();
+    s.addEventListener('animationend', () => s.classList.remove('spin'), { once: true });
+  });
+
+  /* --- polaroid boop --- */
+  const pol = $('#pol'), boops = ['boop!', 'hey!!', 'stop poking me 😤', 'ok one more', 'that tickles', 'the birthday girl 👑'];
+  let bi = 0;
+  pol.addEventListener('click', () => {
+    pol.classList.remove('boing'); void pol.offsetWidth; pol.classList.add('boing'); sfx.boop();
+    pol.querySelector('.cap').textContent = boops[bi++ % boops.length];
+  });
+
+  /* --- candles --- */
+  const N = 5, wishEl = $('#wish');
+  $('#candles').innerHTML = Array.from({ length: N }, (_, i) => `<button class="candle" aria-label="candle ${i + 1}"><span class="flame"></span></button>`).join('');
+  document.querySelectorAll('.candle').forEach(c => c.addEventListener('click', async () => {
+    if (c.classList.contains('out')) return;
+    c.classList.add('out'); sfx.puff();
+    const left = document.querySelectorAll('.candle:not(.out)').length;
+    wishEl.textContent = left ? `${left} to go…` : '';
+    if (!left) {
+      wishEl.textContent = 'make a wish… 🤫'; await wait(1400);
+      wishEl.textContent = 'wish saved ✅ (results may vary)'; confetti(260); sfx.tune();
+      setTimeout(() => $('#stamp').classList.add('on'), 900);
+      await wait(4500);
+      document.querySelectorAll('.candle').forEach(x => x.classList.remove('out'));
+      wishEl.textContent = 'candles relit. go again if you want 🔁';
+    }
+  }));
+
+  /* stamp the report when it scrolls into view too */
+  new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) setTimeout(() => $('#stamp').classList.add('on'), 600); }), { threshold: .6 }).observe($('#report'));
+
+  /* --- make it rain Domis --- */
+  $('#rain').addEventListener('click', () => {
+    for (let i = 0; i < 26; i++) setTimeout(() => {
+      const h = document.createElement('div'), s = 46 + Math.random() * 50;
+      h.className = 'head'; h.style.cssText += `left:${Math.random() * 92}vw;width:${s}px;height:${s}px;background-image:url(img/domi.png)`;
+      document.body.appendChild(h);
+      const fall = innerHeight + 200, dur = 1800 + Math.random() * 1600;
+      h.animate([{ transform: 'translateY(0) rotate(0)' }, { transform: `translateY(${fall}px) rotate(${(Math.random() - .5) * 900}deg)` }], { duration: dur, easing: 'cubic-bezier(.4,0,.8,.6)' }).onfinish = () => h.remove();
+      if (i % 4 === 0) sfx.boop();
+    }, i * 90);
+  });
+  $('#party').addEventListener('click', () => { confetti(240); sfx.horn(); });
+</script>
+</body>
+</html>
